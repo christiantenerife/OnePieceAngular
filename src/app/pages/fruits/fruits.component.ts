@@ -1,31 +1,54 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FruitsService } from '../../core/services/fruits.service';
+import { Fruit } from '../../core/models/fruit.model';
 
 @Component({
   selector: 'app-fruits',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './fruits.component.html',
   styleUrl: './fruits.component.css',
 })
-export class FruitsComponent {
-  fruits = [
+export class FruitsComponent implements OnInit {
+  private fruitsService = inject(FruitsService);
+
+  featuredFruits = [
     {
       name: 'Gomu Gomu no Mi',
       user: 'Luffy',
-      type: 'Poder especial / legendario',
-      image: 'gomu.jpg',
+      image: 'gomu.jpg'
     },
     {
       name: 'Mera Mera no Mi',
       user: 'Ace / Sabo',
-      type: 'Logia',
-      image: 'mera.jpg',
+      image: 'mera.jpg'
     },
     {
       name: 'Ope Ope no Mi',
       user: 'Trafalgar Law',
-      type: 'Paramecia',
-      image: 'ope.jpg',
+      image: 'ope.jpg'
     }
   ];
+
+  apiFruits: Fruit[] = [];
+  loading = true;
+  error = '';
+
+  ngOnInit(): void {
+    this.loadFruits();
+  }
+
+  loadFruits(): void {
+    this.fruitsService.getFruits().subscribe({
+      next: (data) => {
+        this.apiFruits = data;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'No se pudieron cargar las frutas.';
+        this.loading = false;
+      }
+    });
+  }
 }
