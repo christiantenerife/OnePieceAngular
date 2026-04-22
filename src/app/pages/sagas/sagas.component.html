@@ -1,0 +1,14 @@
+<div class="page">
+  <h1>Frutas del Diablo</h1>
+  <p class="subtitle">Descubre algunos de los poderes más famosos de One Piece.</p>
+
+  <div class="card-grid">
+    @for (saga of sagas; track saga.name) {
+      <div class="card">
+        <img [src]="saga.image" [alt]="saga.name">
+        <h3>{{ saga.name }}</h3>
+        <p>{{ saga.description }}</p>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="page">
+  <h1>Frutas del Diablo</h1>
+  <p class="subtitle">Descubre algunos de los poderes más famosos de One Piece.</p>
+
+  <div class="card-grid">
+    @for (character of characters; track character.name) {
+      <div class="card">
+        <img [src]="character.image" [alt]="character.name">
+        <h3>{{ character.name }}</h3>
+        <p><strong>Role:</strong> {{ character.role }}</p>
+        <p>{{ character.description }}</p>
+      </div>
+    }
+  </div>
+</div>

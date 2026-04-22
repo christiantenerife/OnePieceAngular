@@ -1,0 +1,22 @@
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 240px;
+  padding: 20px 0;
+  background: linear-gradient(90deg, hsl(241, 97%, 29%), #12b4e5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+.active {
+  border-bottom: 3px solid whitesmoke;
+}
+a:hover {
+  color: gold;
+}

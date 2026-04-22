@@ -1,0 +1,25 @@
+.site-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(90deg, #910202, #3a3a3a);
+  color: white;
+  
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.page {
+  font-family: 'Bangers', cursive;
+}
+
+.footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  background: #1f3fb7;
+  color: white;
+}
