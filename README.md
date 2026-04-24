@@ -1,90 +1,117 @@
-# 🏴‍☠️ Angular One Piece Project
+# ☠️ OnePieceAngular
 
-This is a small web application built with Angular about the anime **One Piece**.
+A One Piece themed web application built with Angular.  
+The project displays information about characters, devil fruits, and sagas using reusable Angular components, routing, and API services.
 
-The website shows information about:
-- Characters
-- Devil Fruits
-- Sagas
+## 📌 Features
 
-The goal of the project was to learn the basic concepts of Angular such as components, routing and dynamic templates.
+- Angular standalone components
+- Navigation using Angular Router
+- Pages for:
+  - Characters
+  - Devil Fruits
+  - Sagas
+- API integration with the One Piece API
+- Dynamic data rendering
+- Loading and error states
+- Reusable service structure
+- Responsive card-based layout
 
----
+## 🧭 Pages
 
-## 🚀 Features
+### Characters
+Displays featured One Piece characters and supports character data from the API.
 
-- Navigation between pages using Angular Router
-- Dynamic content using Angular control flow (`@for`)
-- Reusable components
-- Card-based layout with images
-- Simple responsive design
+### Devil Fruits
+Displays featured Devil Fruits and loads additional fruit data from the API.
 
-Pages included:
+### Sagas
+Displays featured One Piece sagas and loads saga data from the API.
 
-- **Characters** – shows some main characters from One Piece
-- **Devil Fruits** – shows famous devil fruits and their users
-- **Sagas** – shows some important story arcs from the series
+## 🛠️ Technologies Used
 
----
-
-## 🛠 Technologies Used
-
-- Angular
+- Angular 21
 - TypeScript
 - HTML
 - CSS
-
----
+- RxJS
+- One Piece API
 
 ## 📁 Project Structure
 
-
+```txt
 src/
-app/
-pages/
-characters/
-fruits/
-sagas/
-shared/
-navbar/
-public/
-
-
----
-
-## ▶ How to Run the Project
-
-1. Install dependencies:
-
-
+└── app/
+    ├── core/
+    │   ├── models/
+    │   │   ├── character.model.ts
+    │   │   ├── fruit.model.ts
+    │   │   └── saga.model.ts
+    │   └── services/
+    │       ├── api.service.ts
+    │       ├── characters.service.ts
+    │       ├── fruits.service.ts
+    │       └── sagas.service.ts
+    ├── pages/
+    │   ├── characters/
+    │   ├── fruits/
+    │   └── sagas/
+    └── shared/
+        └── navbar/
+▶️ How to Run the Project
+Clone the repository:
+git clone https://github.com/christiantenerife/OnePieceAngular.git
+Enter the project folder:
+cd OnePieceAngular
+Install dependencies:
 npm install
+Start the development server:
+npm start
 
-
-2. Run the development server:
-
+Or:
 
 ng serve
-
-
-3. Open the browser at:
-
-
+Open the app in your browser:
 http://localhost:4200
+📦 Available Scripts
+npm start
 
+Runs the project locally.
 
----
+npm run build
 
-## 📚 What I Learned
+Builds the project for production.
 
-Through this project I learned:
+npm test
 
-- How Angular applications are structured using components
-- How to navigate between pages using Angular routing
-- How to display dynamic data using arrays and loops
-- How to organize a project into reusable components
+Runs the test setup.
 
----
+🌐 API
 
-## 👤 Author
+This project uses the One Piece API:
+
+https://api.api-onepiece.com/v2
+
+Used endpoints include:
+
+/characters/en
+/characters/en/search
+/fruits/en
+/sagas/en
+🎯 What I Learned
+
+Through this project, I practiced:
+
+Creating Angular standalone components
+Setting up routes with Angular Router
+Organizing an Angular project into pages, shared components, models, and services
+Fetching data from an external API using HttpClient
+Displaying dynamic data with Angular templates
+Handling loading and error states
+👤 Author
 
 Christian Tenerife
+
+📄 Description
+
+Página web con las sagas, frutas y personajes de One Piece.
