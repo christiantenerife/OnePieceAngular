@@ -1,5 +1,5 @@
 export interface Saga {
   id: number;
   title: string;
-  description: string;
+  saga_number: string;
 }

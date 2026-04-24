@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FruitsService } from '../../core/services/fruits.service';
 import { Fruit } from '../../core/models/fruit.model';
@@ -12,6 +12,7 @@ import { Fruit } from '../../core/models/fruit.model';
 })
 export class FruitsComponent implements OnInit {
   private fruitsService = inject(FruitsService);
+  private cdr = inject(ChangeDetectorRef);
 
   featuredFruits = [
     {
@@ -39,16 +40,29 @@ export class FruitsComponent implements OnInit {
     this.loadFruits();
   }
 
-  loadFruits(): void {
-    this.fruitsService.getFruits().subscribe({
-      next: (data) => {
-        this.apiFruits = data;
-        this.loading = false;
-      },
-      error: () => {
-        this.error = 'No se pudieron cargar las frutas.';
-        this.loading = false;
-      }
-    });
-  }
+loadFruits(): void {
+  console.log('Component loadFruits called');
+
+  this.loading = true;
+  this.error = '';
+
+  this.fruitsService.getFruits().subscribe({
+    next: (data: Fruit[]) => {
+      console.log('Component NEXT', data.length);
+      this.apiFruits = data;
+      this.loading = false;
+      this.cdr.detectChanges();
+      console.log('loading:', this.loading, 'count:', this.apiFruits.length);
+    },
+    error: (err) => {
+      console.log('Component ERROR', err);
+      this.error = 'No se pudieron cargar las frutas.';
+      this.loading = false;
+    },
+    complete: () => {
+      console.log('Component COMPLETE');
+    }
+  });
 }
+}
+

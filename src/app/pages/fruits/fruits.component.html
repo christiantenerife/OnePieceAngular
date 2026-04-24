@@ -1,22 +1,25 @@
 <div class="page">
   <h1>FRUTAS DEL DIABLO</h1>
+
   <p class="subtitle">
-    Descubre algunos de los poderes más famosos de One Piece.
+    Descubre algunos de los poderes más famosos de One Piece
   </p>
 
+  <!-- Featured fruits -->
   <h2 class="section-title">Frutas destacadas</h2>
 
   <div class="card-grid">
     @for (fruit of featuredFruits; track fruit.name) {
       <div class="card">
-        <img [src]="'/' + fruit.image" [alt]="fruit.name" />
+        <img [src]="'/' + fruit.image" [alt]="fruit.name" loading="lazy" />
         <h3>{{ fruit.name }}</h3>
         <p><strong>Usuario:</strong> {{ fruit.user }}</p>
       </div>
     }
   </div>
 
-  <h2 class="section-title">Más frutas desde la API</h2>
+  <!-- API fruits -->
+  <h2 class="section-title">Más frutas desde la API:</h2>
 
   @if (loading) {
     <p class="status-message">Cargando frutas...</p>
@@ -28,7 +31,7 @@
 
   @if (!loading && apiFruits.length > 0) {
     <div class="card-grid">
-      @for (fruit of apiFruits; track fruit.id) {
+      @for (fruit of apiFruits; track $index) {
         <div class="card">
           <h3>{{ fruit.name }}</h3>
           <p><strong>Tipo:</strong> {{ fruit.type }}</p>

@@ -1,6 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CharactersService } from '../../core/services/characters.service';
+import { Subject, of } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  catchError,
+  map
+} from 'rxjs/operators';
 import { Character } from '../../core/models/character.model';
 
 @Component({
@@ -11,10 +19,9 @@ import { Character } from '../../core/models/character.model';
   styleUrl: './characters.component.css',
 })
 export class CharactersComponent {
-
   private charactersService = inject(CharactersService);
 
-  // Your existing characters with pictures
+  // Existing characters with pictures
   featuredCharacters = [
     {
       name: 'Monkey D. Luffy',
@@ -37,35 +44,42 @@ export class CharactersComponent {
   ];
 
   // API search results
-  searchResults: Character[] = [];
+  private searchTerms = new Subject<string>();
 
-  loading = false;
-  error = '';
+searchResults: Character[] = [];
+loading = false;
+error = '';
 
-  onSearch(term: string): void {
+ngOnInit(): void {
+  this.searchTerms.pipe(
+    map(term => term.trim()),
+    debounceTime(300),
+    distinctUntilChanged(),
 
-    const value = term.trim();
-
-    if (!value) {
-      this.searchResults = [];
-      this.error = '';
-      return;
-    }
-
-    this.loading = true;
-    this.error = '';
-
-    this.charactersService.searchCharacters(value).subscribe({
-      next: (data) => {
-        this.searchResults = data;
+    switchMap(value => {
+      if (!value) {
+        this.searchResults = [];
+        this.error = '';
         this.loading = false;
-      },
-      error: () => {
-        this.error = 'Failed to search characters.';
-        this.loading = false;
+        return of([]);
       }
-    });
 
-  }
+      this.loading = true;
+      this.error = '';
 
+      return this.charactersService.searchCharacters(value).pipe(
+        catchError(() => {
+          this.error = 'Failed to search characters.';
+          return of([]);
+        })
+      );
+    })
+  ).subscribe(data => {
+    this.searchResults = data;
+    this.loading = false;
+  });
 }
+
+onSearch(term: string): void {
+  this.searchTerms.next(term);
+}}

@@ -1,14 +1,42 @@
 <div class="page">
-  <h1>Frutas del Diablo</h1>
-  <p class="subtitle">Descubre algunos de los poderes más famosos de One Piece.</p>
+  <h1>SAGAS</h1>
+
+  <p class="subtitle">
+    Descubre las Sagas de One Piece
+  </p>
+
+  <!-- Featured sagas -->
+  <h2 class="section-title">Sagas destacadas</h2>
 
   <div class="card-grid">
-    @for (saga of sagas; track saga.name) {
+    @for (saga of featuredSagas; track $index ) {
       <div class="card">
-        <img [src]="saga.image" [alt]="saga.name">
+        <img [src]="'/' + saga.image" [alt]="saga.name" loading="lazy" />
         <h3>{{ saga.name }}</h3>
-        <p>{{ saga.description }}</p>
+        <p><strong>Número de la Saga:</strong> {{ saga.number }}</p>
       </div>
     }
   </div>
+
+  <!-- API sagas -->
+  <h2 class="section-title">Más sagas desde la API:</h2>
+
+  @if (loading) {
+    <p class="status-message">Cargando sagas...</p>
+  }
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (!loading && apiSagas.length > 0) {
+  <div class="card-grid">
+    @for (saga of apiSagas; track $index) {
+      <div class="card">
+        <h3>{{ saga.title }}</h3>
+        <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
+      </div>
+    }
+  </div>
+}
 </div>
