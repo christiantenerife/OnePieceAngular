@@ -9,8 +9,8 @@ import {
   catchError,
   map
 } from 'rxjs/operators';
-import { Character } from '../../../core/models/character.model';
 import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-characters',
@@ -47,39 +47,25 @@ export class CharactersComponent {
   // API search results
   private searchTerms = new Subject<string>();
 
-searchResults: Character[] = [];
-loading = false;
-error = '';
+searchResults$ = this.searchTerms.pipe(
+  map(term => term.trim()),
+  debounceTime(300),
+  distinctUntilChanged(),
+  switchMap(value => {
+    if (!value) {
+      return of([]);  // Return empty array, no need to set loading
+    }
+    return this.charactersService.searchCharacters(value).pipe(
+      catchError(() => {
+        return of([]); // Return empty on error
+      })
+    );
+  })
+);
+error: any;
+loading: any;
+results: any;
 
-ngOnInit(): void {
-  this.searchTerms.pipe(
-    map(term => term.trim()),
-    debounceTime(300),
-    distinctUntilChanged(),
-
-    switchMap(value => {
-      if (!value) {
-        this.searchResults = [];
-        this.error = '';
-        this.loading = false;
-        return of([]);
-      }
-
-      this.loading = true;
-      this.error = '';
-
-      return this.charactersService.searchCharacters(value).pipe(
-        catchError(() => {
-          this.error = 'Failed to search characters.';
-          return of([]);
-        })
-      );
-    })
-  ).subscribe(data => {
-    this.searchResults = data;
-    this.loading = false;
-  });
-}
 
 onSearch(term: string): void {
   this.searchTerms.next(term);
