@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CharactersService } from '../../core/services/characters.service';
+import { CharactersService } from '../../../core/services/characters.service';
 import { Subject, of } from 'rxjs';
 import {
   debounceTime,
@@ -9,12 +9,13 @@ import {
   catchError,
   map
 } from 'rxjs/operators';
-import { Character } from '../../core/models/character.model';
+import { Character } from '../../../core/models/character.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-characters',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './characters.component.html',
   styleUrl: './characters.component.css',
 })

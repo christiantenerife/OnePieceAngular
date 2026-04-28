@@ -16,4 +16,8 @@ export class CharactersService {
   searchCharacters(name: string): Observable<Character[]> {
     return this.api.get<Character[]>('/characters/en/search', { name });
   }
+
+  getCharacterById(id: string): Observable<Character> {
+    return this.api.get<Character>(`/characters/en/${id}`);
+  }
 }

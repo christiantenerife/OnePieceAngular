@@ -11,9 +11,9 @@
   <div class="card-grid">
     @for (fruit of featuredFruits; track fruit.name) {
       <div class="card">
-        <img [src]="'/' + fruit.image" [alt]="fruit.name" loading="lazy" />
-        <h3>{{ fruit.name }}</h3>
-        <p><strong>Usuario:</strong> {{ fruit.user }}</p>
+        <img [src]="fruit.filename" [alt]="fruit.name" />
+        <h3>{{ fruit.roman_name }}</h3>
+        <p>{{ fruit.name }}</p>
       </div>
     }
   </div>
@@ -36,6 +36,10 @@
           <h3>{{ fruit.name }}</h3>
           <p><strong>Tipo:</strong> {{ fruit.type }}</p>
           <p>{{ fruit.description }}</p>
+          <img [src]="fruit.filename" [alt]="fruit.name" 
+          (error)="$any($event.target).style.display='none'"
+/>
+
         </div>
       }
     </div>

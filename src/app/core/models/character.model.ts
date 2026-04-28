@@ -4,6 +4,10 @@ export interface Character {
   job: string;
   bounty: string;
   status: string;
+  age: string;
+  birthday: string;
+  filename: string;
+  technicalFile: string;
   crew?: {
     name: string;
   };

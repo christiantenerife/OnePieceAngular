@@ -1,13 +1,14 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SagasService } from '../../core/services/sagas.service';
-import { Saga } from '../../core/models/saga.model';
+import { SagasService } from '../../../core/services/sagas.service';
+import { Saga } from '../../../core/models/saga.model';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-sagas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl:'./sagas.component.html',
   styleUrl: './sagas.component.css',
 })
@@ -19,19 +20,19 @@ private sagasService = inject(SagasService);
     {
       name: 'East Blue',
       description: 'El comienzo del viaje de Luffy.',
-      image: 'eastblue.jpg',
+      image: 'sagas/1.jpg',
       number: '1'
     },
     {
       name: 'Alabasta',
       description: 'Los Sombrero de Paja ayudan a Vivi a salvar su reino.',
-      image: 'alabasta.jpg',
+      image: 'sagas/2.jpg',
       number: '2'
     },
     {
       name: 'Saga de la Isla del Cielo',
       description: 'La búsqueda de la ciudad de oro y el enfrentamiento contra Enel.',
-      image: 'marineford.jpg',
+      image: 'sagas/3.jpg',
       number: '3'
     }
   ];

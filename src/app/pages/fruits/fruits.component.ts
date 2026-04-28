@@ -14,24 +14,7 @@ export class FruitsComponent implements OnInit {
   private fruitsService = inject(FruitsService);
   private cdr = inject(ChangeDetectorRef);
 
-  featuredFruits = [
-    {
-      name: 'Gomu Gomu no Mi',
-      user: 'Luffy',
-      image: 'gomu.jpg'
-    },
-    {
-      name: 'Mera Mera no Mi',
-      user: 'Ace / Sabo',
-      image: 'mera.jpg'
-    },
-    {
-      name: 'Ope Ope no Mi',
-      user: 'Trafalgar Law',
-      image: 'ope.jpg'
-    }
-  ];
-
+  featuredFruits: Fruit[] = [];
   apiFruits: Fruit[] = [];
   loading = true;
   error = '';
@@ -48,12 +31,19 @@ loadFruits(): void {
 
   this.fruitsService.getFruits().subscribe({
     next: (data: Fruit[]) => {
-      console.log('Component NEXT', data.length);
-      this.apiFruits = data;
-      this.loading = false;
-      this.cdr.detectChanges();
-      console.log('loading:', this.loading, 'count:', this.apiFruits.length);
-    },
+    this.featuredFruits = data.filter(f =>
+    ['Gomu Gomu no Mi', 'Mera Mera no Mi', 'Ope Ope no Mi'].includes(f.roman_name)
+  );
+
+  this.apiFruits = data
+    .filter(f =>
+      !['Gomu Gomu no Mi', 'Mera Mera no Mi', 'Ope Ope no Mi'].includes(f.roman_name)
+    )
+    .sort((a, b) => Number(!!b.filename) - Number(!!a.filename));
+
+  this.loading = false;
+  this.cdr.detectChanges();
+},
     error: (err) => {
       console.log('Component ERROR', err);
       this.error = 'No se pudieron cargar las frutas.';

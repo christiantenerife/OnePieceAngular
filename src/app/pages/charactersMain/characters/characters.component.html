@@ -41,15 +41,10 @@
     @if (!loading && searchResults.length > 0) {
       <div class="characters-grid">
         @for (character of searchResults; track character.id) {
-          <div class="card">
+          <div class="card" [routerLink]="['/characters', character.id]">
             <h3>{{ character.name }}</h3>
-            <p><strong>Rol:</strong> {{ character.job }}</p>
-            <p><strong>Recompensa:</strong> {{ character.bounty }}</p>
-            <p><strong>Tripulación:</strong> {{ character.crew?.name || 'Unknown' }}</p>
-            <p><strong>Fruta:</strong> {{ character.fruit?.name || 'None' }}</p>
-          </div>
-        }
+           </div> 
+        } 
       </div>
-    }
-  </section>
-</div>
+  }
+   
