@@ -1,3 +1,10 @@
 .page {
   background-color: #3edf1a;
 }
+
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  gap: 20px;
+  justify-content: center;
+}

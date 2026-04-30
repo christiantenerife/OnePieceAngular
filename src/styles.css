@@ -69,6 +69,7 @@ img {
   background-color: #ffe066;
 }
 
+
 .card h3 {
   margin: 15px 0 0.8rem;
 }
@@ -103,6 +104,7 @@ img {
   outline: none;
   background: white;
   color: #111827;
+
 }
 
 .search-input:focus {
