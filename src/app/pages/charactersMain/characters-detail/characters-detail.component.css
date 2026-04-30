@@ -1,25 +1,12 @@
-.card {
+.card--character-detail {
   background: #6cc05f;
   padding: 30px 40px;
-  border-radius: 25px;
-
-  
   width: fit-content;
-  height: fit-content;
-
-
   margin: 40px auto;
+}
 
-  text-align: center;
-  }
-
-  .saga-image {
+.character-image {
   width: 200px;
   border-radius: 12px;
   margin-bottom: 15px;
-}
-  .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-  background-color: #ffe066;
 }

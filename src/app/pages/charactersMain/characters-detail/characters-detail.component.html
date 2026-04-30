@@ -1,16 +1,25 @@
+<section class="page">
+
 @if (character$ | async; as character) {
-  <div class="card-grid">
-    <div class="card">
-      <h3>{{ character.name }}</h3>
-      <p><strong>Número del personaje:</strong> {{ character.id }}</p>
-      <p><strong>Rol:</strong> {{ character.job }}</p>
-      <p><strong>Recompensa:</strong> {{ character.bounty }}</p>
-      <p><strong>Fecha de nacimiento:</strong> {{ character.birthday || 'No se conoce' }}</p>
-      <p><strong>Edad:</strong> {{ character.age.replace('ans', 'años') || 'No se conoce' }}</p>
-      <p><strong>Tripulación:</strong> {{ character.crew?.name || 'No se conoce' }}</p>
-      <p><strong>Fruta:</strong> {{ character.fruit?.name || 'No tiene' }}</p>
-    </div>
+
+  <div class="card card--character-detail">
+
+    <h3>{{ character.name }}</h3>
+
+    <p><strong>Número del personaje:</strong> {{ character.id }}</p>
+    <p><strong>Rol:</strong> {{ character.job }}</p>
+    <p><strong>Recompensa:</strong> {{ character.bounty }}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{ character.birthday || 'No se conoce' }}</p>
+    <p><strong>Edad:</strong> {{ character.age.replace('ans', 'años') || 'No se conoce' }}</p>
+    <p><strong>Tripulación:</strong> {{ character.crew?.name || 'No se conoce' }}</p>
+    <p><strong>Fruta:</strong> {{ character.fruit?.name || 'No tiene' }}</p>
+
   </div>
+
 } @else {
+
   <p class="status-message">Cargando personaje...</p>
+
 }
+
+</section>

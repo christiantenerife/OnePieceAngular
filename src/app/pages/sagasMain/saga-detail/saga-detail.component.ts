@@ -32,7 +32,5 @@ export class SagaDetailComponent {
       })
     );
   }
-  getSagaImage(sagaNumber: string) {
-    return '/sagas/' + sagaNumber + '.jpg';
   }
-}
+

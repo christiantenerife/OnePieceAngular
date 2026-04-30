@@ -5,21 +5,9 @@
     Descubre algunos de los poderes más famosos de One Piece
   </p>
 
-  <!-- Featured fruits -->
-  <h2 class="section-title">Frutas destacadas</h2>
-
-  <div class="card-grid">
-    @for (fruit of featuredFruits; track fruit.name) {
-      <div class="card">
-        <img [src]="fruit.filename" [alt]="fruit.name" />
-        <h3>{{ fruit.roman_name }}</h3>
-        <p>{{ fruit.name }}</p>
-      </div>
-    }
-  </div>
-
+ 
   <!-- API fruits -->
-  <h2 class="section-title">Más frutas desde la API:</h2>
+  <h2 class="section-title">Frutas desde la API:</h2>
 
   @if (loading) {
     <p class="status-message">Cargando frutas...</p>
@@ -36,8 +24,8 @@
           <h3>{{ fruit.name }}</h3>
           <p><strong>Tipo:</strong> {{ fruit.type }}</p>
           <p>{{ fruit.description }}</p>
-          <img [src]="fruit.filename" [alt]="fruit.name" 
-          (error)="$any($event.target).style.display='none'"
+          <img [src]="fruit.filename || 'placeholder.jpg'" [alt]="fruit.name" 
+          (error)="$any($event.target).src='placeholder.jpg'"
 />
 
         </div>

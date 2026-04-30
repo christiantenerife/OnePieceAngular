@@ -31,14 +31,8 @@ loadFruits(): void {
 
   this.fruitsService.getFruits().subscribe({
     next: (data: Fruit[]) => {
-    this.featuredFruits = data.filter(f =>
-    ['Gomu Gomu no Mi', 'Mera Mera no Mi', 'Ope Ope no Mi'].includes(f.roman_name)
-  );
-
   this.apiFruits = data
-    .filter(f =>
-      !['Gomu Gomu no Mi', 'Mera Mera no Mi', 'Ope Ope no Mi'].includes(f.roman_name)
-    )
+    
     .sort((a, b) => Number(!!b.filename) - Number(!!a.filename));
 
   this.loading = false;

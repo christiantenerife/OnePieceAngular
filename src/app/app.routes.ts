@@ -11,5 +11,6 @@ export const routes: Routes = [
   { path: 'characters', component: CharactersComponent },
   {path: 'sagas', component: SagasComponent},
   {path: 'sagas/:id', component: SagaDetailComponent},
-  {path: 'characters/:id', component: CharactersDetailComponent}
+  {path: 'characters/:id', component: CharactersDetailComponent},
+  {path: '', redirectTo: '/sagas', pathMatch: 'full' }
 ];

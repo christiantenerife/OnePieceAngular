@@ -5,21 +5,9 @@
     Descubre las Sagas de One Piece
   </p>
 
-  <!-- Featured sagas -->
-  <h2 class="section-title">Sagas destacadas</h2>
-
-  <div class="card-grid">
-    @for (saga of featuredSagas; track $index ) {
-      <div class="card">
-        <img [src]="'/' + saga.image" [alt]="saga.name" loading="lazy" />
-        <h3>{{ saga.name }}</h3>
-        <p><strong>Número de la Saga:</strong> {{ saga.number }}</p>
-      </div>
-    }
-  </div>
 
   <!-- API sagas -->
-  <h2 class="section-title">Más sagas desde la API:</h2>
+  <h2 class="section-title">Sagas desde la API:</h2>
 
   @if (loading) {
     <p class="status-message">Cargando sagas...</p>

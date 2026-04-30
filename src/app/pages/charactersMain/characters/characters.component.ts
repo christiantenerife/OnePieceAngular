@@ -22,28 +22,7 @@ import { RouterLink } from '@angular/router';
 export class CharactersComponent {
   private charactersService = inject(CharactersService);
 
-  // Existing characters with pictures
-  featuredCharacters = [
-    {
-      name: 'Monkey D. Luffy',
-      role: 'Captain',
-      description: '¡Yo seré el rey de los piratas!',
-      image: 'luffy.jpg'
-    },
-    {
-      name: 'Roronoa Zoro',
-      role: 'Swordsman',
-      description: 'Mejor espadachín del mundo.',
-      image: 'zoro.jpg'
-    },
-    {
-      name: 'Nami',
-      role: 'Navigator',
-      description: 'La experta navegante de la tripulación del Sombrero de Paja.',
-      image: 'nami.jpg'
-    }
-  ];
-
+  
   // API search results
   private searchTerms = new Subject<string>();
 

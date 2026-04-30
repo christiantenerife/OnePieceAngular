@@ -1,20 +1,26 @@
-<div class="card-grid" *ngIf="saga$ | async as saga">
-  <div class="card">
+<section class="page">
+  <div *ngIf="saga$ | async as saga">
 
-    <img
-      [src]="getSagaImage(saga.saga_number)"
-      [alt]="saga.title"
-      class="saga-image"
-      loading="lazy"
-    />
+    <div class="card card--saga-detail">
 
-    <h3>{{ saga.title }}</h3>
-    <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
-    <p><strong>Capítulos de la Saga:</strong> {{ saga.saga_chapitre.replace(/à/gi, 'a') }}</p>
-    <p><strong>Volumen de la Saga:</strong> {{ saga.saga_volume.replace(/à/gi, 'a') }}</p>
-    <p><strong>Episodios de la Saga:</strong> {{ saga.saga_episode.replace(/à/gi, 'a') }}</p>
+      <h3>{{ saga.title }}</h3>
+
+      <p><strong>Número de la Saga:</strong> {{ saga.saga_number }}</p>
+
+      <p><strong>Capítulos de la Saga:</strong>
+        {{ saga.saga_chapitre.replace(/à/gi, 'a') }}
+      </p>
+
+      <p><strong>Volumen de la Saga:</strong>
+        {{ saga.saga_volume.replace(/à/gi, 'a') }}
+      </p>
+
+      <p><strong>Episodios de la Saga:</strong>
+        {{ saga.saga_episode.replace(/à/gi, 'a') }}
+      </p>
+
+    </div>
 
   </div>
-</div>
-      
+</section>
 

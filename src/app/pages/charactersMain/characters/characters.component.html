@@ -4,19 +4,6 @@
     Descubre algunos de los personajes más icónicos de One Piece
   </p>
 
-  <h2 class="section-title">Personajes destacados</h2>
-
-  <div class="characters-grid">
-    @for (character of featuredCharacters; track character.name) {
-      <div class="card">
-        <img [src]="'/' + character.image" [alt]="character.name" />
-        <h3>{{ character.name }}</h3>
-        <p>{{ character.role }}</p>
-        <p>{{ character.description }}</p>
-      </div>
-    }
-  </div>
-
   <section class="search-section">
     <h2 class="section-title">Búsqueda de personajes</h2>
 

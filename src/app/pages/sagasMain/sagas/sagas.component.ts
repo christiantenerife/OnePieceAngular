@@ -16,27 +16,6 @@ export class SagasComponent {
 private sagasService = inject(SagasService);
   private cdr = inject(ChangeDetectorRef);
   
-  featuredSagas = [
-    {
-      name: 'East Blue',
-      description: 'El comienzo del viaje de Luffy.',
-      image: 'sagas/1.jpg',
-      number: '1'
-    },
-    {
-      name: 'Alabasta',
-      description: 'Los Sombrero de Paja ayudan a Vivi a salvar su reino.',
-      image: 'sagas/2.jpg',
-      number: '2'
-    },
-    {
-      name: 'Saga de la Isla del Cielo',
-      description: 'La búsqueda de la ciudad de oro y el enfrentamiento contra Enel.',
-      image: 'sagas/3.jpg',
-      number: '3'
-    }
-  ];
-
   apiSagas: Saga[] = [];
   loading = true;
   error = '';
